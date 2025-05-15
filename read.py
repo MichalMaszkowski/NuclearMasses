@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def read():
     # Define the column names
@@ -27,3 +28,18 @@ def read():
     # df.info()
 
     return df
+
+def plot():
+    df = read()
+
+    # Calculate A = N + Z
+    df['A'] = df['N'] + df['Z']
+
+    # Create the scatter plot
+    plt.figure(figsize=(10, 6))
+    plt.scatter(df['A'], df['binding'], s=5) # s controls the marker size
+    plt.xlabel('A (N + Z)')
+    plt.ylabel('Binding Energy (MeV)')
+    plt.title('Binding Energy vs. A')
+    plt.grid(True)
+    plt.show()
