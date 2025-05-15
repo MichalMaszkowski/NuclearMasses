@@ -27,7 +27,7 @@ def read():
     df['unc_binding'] = df['unc_binding'].astype(float)
     # df.info()
 
-    return df
+    return df.iloc[2:]
 
 def plot():
     df = read()
