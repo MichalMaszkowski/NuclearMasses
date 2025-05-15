@@ -10,5 +10,20 @@ def read():
     
     #select only those columns that we are interested in:
     df = df[['N', 'Z', 'binding', 'unc_binding']]
-    
+
+    # convert df['unc_binding'] to string
+    df['unc_binding'] = df['unc_binding'].astype(str)
+    df['binding'] = df['binding'].astype(str)
+    # df.info()
+
+    # for each element of df['binding'] check if it contains '#'
+    df = df[df['binding'].apply(lambda x: not ('#' in x))]
+    df = df[df['unc_binding'].apply(lambda x: not ('#' in x))]
+    # print(df.info())
+
+    # convert df['binding' ] to a float
+    df['binding'] = df['binding'].astype(float)
+    df['unc_binding'] = df['unc_binding'].astype(float)
+    # df.info()
+
     return df
