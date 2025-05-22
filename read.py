@@ -7,7 +7,7 @@ def read():
 
     df = pd.read_fwf('Data.txt',
                     skiprows=36,
-                names=column_names)
+                names=column_names, infer_nrows=3500)
     
     #select only those columns that we are interested in:
     df = df[['N', 'Z', 'binding', 'unc_binding']]
